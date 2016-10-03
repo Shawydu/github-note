@@ -26149,7 +26149,7 @@
 	        { className: "main-container" },
 	        _react2.default.createElement(
 	          "nav",
-	          { className: "navbar nav-default", role: "navigation" },
+	          { className: "navbar navbar-inverse", role: "navigation" },
 	          _react2.default.createElement(
 	            "div",
 	            { className: "col-sm-7 col-sm-offset-2", style: { marginTop: 15 } },
@@ -26239,15 +26239,15 @@
 
 	var _Notes2 = _interopRequireDefault(_Notes);
 
-	var _reactfire = __webpack_require__(228);
+	var _reactfire = __webpack_require__(229);
 
 	var _reactfire2 = _interopRequireDefault(_reactfire);
 
-	var _reactMixin = __webpack_require__(229);
+	var _reactMixin = __webpack_require__(230);
 
 	var _reactMixin2 = _interopRequireDefault(_reactMixin);
 
-	var _firebase = __webpack_require__(231);
+	var _firebase = __webpack_require__(232);
 
 	var _firebase2 = _interopRequireDefault(_firebase);
 
@@ -26460,6 +26460,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _NotesList = __webpack_require__(228);
+
+	var _NotesList2 = _interopRequireDefault(_NotesList);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -26480,15 +26484,16 @@
 	  _createClass(Notes, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log('Notes: ', this.props.notes);
 	      return _react2.default.createElement(
 	        'div',
 	        null,
 	        _react2.default.createElement(
-	          'p',
+	          'h3',
 	          null,
-	          ' NOTES '
-	        )
+	          ' Notes for ',
+	          this.props.username
+	        ),
+	        _react2.default.createElement(_NotesList2.default, { notes: this.props.notes })
 	      );
 	    }
 	  }]);
@@ -26500,6 +26505,59 @@
 
 /***/ },
 /* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var NotesList = function (_React$Component) {
+	  _inherits(NotesList, _React$Component);
+
+	  function NotesList() {
+	    _classCallCheck(this, NotesList);
+
+	    return _possibleConstructorReturn(this, (NotesList.__proto__ || Object.getPrototypeOf(NotesList)).apply(this, arguments));
+	  }
+
+	  _createClass(NotesList, [{
+	    key: "render",
+	    value: function render() {
+	      var notes = this.props.notes.map(function (note, index) {
+	        return _react2.default.createElement(
+	          "li",
+	          { className: "list-group-item", key: index },
+	          note[".value"]
+	        );
+	      });
+
+	      return _react2.default.createElement(
+	        "ul",
+	        { className: "list-group" },
+	        notes
+	      );
+	    }
+	  }]);
+
+	  return NotesList;
+	}(_react2.default.Component);
+
+	module.exports = NotesList;
+
+/***/ },
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -26870,10 +26928,10 @@
 
 
 /***/ },
-/* 229 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var mixin = __webpack_require__(230);
+	var mixin = __webpack_require__(231);
 	var assign = __webpack_require__(4);
 
 	var mixinProto = mixin({
@@ -27029,7 +27087,7 @@
 
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports) {
 
 	function objToStr(x){ return Object.prototype.toString.call(x); };
@@ -27206,7 +27264,7 @@
 
 
 /***/ },
-/* 231 */
+/* 232 */
 /***/ function(module, exports) {
 
 	/*! @license Firebase v2.4.2
